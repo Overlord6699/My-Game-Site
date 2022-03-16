@@ -386,7 +386,7 @@ body.lock{
 
 
 
-video.active {
+.video_container video.active {
   display: block;
 }
 
@@ -411,7 +411,7 @@ video.active {
   position: relative;
   justify-content: center;
   align-items: center;
-  display: none;
+  display: flex;
 }
 
 .video-play-button{
@@ -420,13 +420,13 @@ video.active {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 11;
 }
 
 figure {
   z-index: 10;
-  width: 329px;
-  height: 153px;
+  width: 658px;
+  height: 306px;
 }
 
 figure img{
