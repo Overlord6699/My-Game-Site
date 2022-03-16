@@ -443,10 +443,11 @@ body.lock{
 .video-play-button img{
   width: 90px;
   height: 90px;
+  opacity: 0.8;
 }
 
 .video-play-button img:hover{
-  opacity: 0.8;
+  opacity: 1;
 }
 
 
