@@ -178,7 +178,7 @@ list-style: none;
   cursor: pointer;
 }
 
-.play_button_image:hover{
+.play_button_container:hover{
   opacity: 0.5;
 }
 
