@@ -384,10 +384,21 @@ body.lock{
   max-width: 100%;
 }
 
+.trailer_text{
+  font-family: 'Pixeloid Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 62px;
+  text-align: center;
+  letter-spacing: 0.05em;
 
+  color: #BDD1D1;
+}
 
 .video_container video.active {
   display: block;
+  z-index: 100;
 }
 
 .video_container{
@@ -405,6 +416,7 @@ body.lock{
   width: 800px;
   height: 450px;    
   display: none;
+  object-fit: cover;
 }
 
 .video_preview{
@@ -425,8 +437,8 @@ body.lock{
 
 figure {
   z-index: 10;
-  width: 658px;
-  height: 306px;
+  width: 800px;
+  height: 100%;
 }
 
 figure img{
