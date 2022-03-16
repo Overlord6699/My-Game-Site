@@ -435,7 +435,20 @@ body.lock{
   justify-content: center;
   align-items: center;
   z-index: 11;
+
+  width: 0px;
+  height: 0px;
 }
+
+.video-play-button img{
+  width: 90px;
+  height: 90px;
+}
+
+.video-play-button img:hover{
+  opacity: 0.8;
+}
+
 
 figure {
   z-index: 10;
