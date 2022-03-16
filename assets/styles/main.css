@@ -307,7 +307,7 @@ body{
 }
 
 main{
-  background-image: url('/assets/pictures/background/ФОН.png');
+  background-image: url('../My-Game-Site/assets/pictures/background/ФОН.png');
   background-repeat: repeat-y;
   background-size: cover;
   background-color: #000000;
@@ -374,7 +374,7 @@ body.lock{
 .menu {
   position: relative;
   display: flex;
-  list-style: url('/assets/pictures/icons/aim.png');
+  list-style: url('../My-Game-Site/assets/pictures/icons/aim.png');
   list-style-position: inside;
 }
   
