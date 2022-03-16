@@ -6,7 +6,7 @@
     <header id='header' class='header lock-padding flex'>
         <div class='navbar'>
             <div class='left_header'>
-                <img class='nav_icon' src='/assets/pictures/icons/header_icon.png'></img>
+                <img class='nav_icon' src='./assets/pictures/icons/header_icon.png'></img>
 
                 <div class='menu_container'>
                     <nav>
@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <img class='nav_icon_login' src='/assets/pictures/Вход.png'></img>
+            <img class='nav_icon_login' src='./assets/pictures/Вход.png'></img>
         </div>
     </header>
 </div>
