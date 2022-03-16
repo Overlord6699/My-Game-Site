@@ -692,7 +692,7 @@ transition: 0.3s;
   width: 60px;
 }
 
-.social_media_icon:hover{
+.footer_icons_container li img:hover{
   scale: 1.2;
 }
 
