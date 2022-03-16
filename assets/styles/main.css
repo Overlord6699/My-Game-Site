@@ -385,6 +385,8 @@ body.lock{
 }
 
 .trailer_text{
+  margin-top: 100px;
+
   font-family: 'Pixeloid Mono';
   font-style: normal;
   font-weight: 400;
