@@ -692,6 +692,10 @@ transition: 0.3s;
   width: 60px;
 }
 
+.social_media_icon:hover{
+  scale: 1.2;
+}
+
 .trapezoid_container{
   margin: auto auto;
   margin-top: 50px;
