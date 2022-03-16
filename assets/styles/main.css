@@ -690,10 +690,12 @@ transition: 0.3s;
 .social_media_icon{
   height: 60px;
   width: 60px;
+
+  opacity: 0.8;
 }
 
-.footer_icons_container li img:hover{
-  scale: 1.2;
+.social_media_icon:hover{
+  opacity: 1;
 }
 
 .trapezoid_container{
