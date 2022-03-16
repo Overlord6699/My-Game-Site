@@ -384,7 +384,25 @@ body.lock{
   max-width: 100%;
 }
 
+.video_container{
+  display: flex;
+}
 
+.video-preview-button{
+  position: absolute;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.figure img{
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
 
 .authorize{
   list-style: none;
