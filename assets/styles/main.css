@@ -14,8 +14,9 @@
 .slider_picture{
   max-width: 779px;
   width: 100%;
-
   height: 373px;
+
+  object-fit: contain;
 }
 
 .weapon_slider_picture{

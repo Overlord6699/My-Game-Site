@@ -20,7 +20,7 @@
         <section class='page page-1'>
 
             <div class='game_name_text'>
-                <h1>Добро пожаловать на главную страницу игры...</h1>
+                <h1>{{welcome_text}}</h1>
             </div>
 
             <img class='main_picture' src='../My-Game-Site/assets/pictures/MainPicture.png' alt="">
@@ -42,14 +42,7 @@
 
                 <div class='about_game_text_container'>
                     <h3 class='about_game_text'>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Nostrum sit consectetur deleniti mollitia, nulla dolores architecto ex ad, laudantium quibusdam
-                        corrupti?
-                        Fuga quos alias molestiae. Id veniam incidunt dolore neque. Lorem, ipsum dolor sit amet
-                        consectetur adipisicing elit.
-                        Nostrum sit consectetur deleniti mollitia, nulla dolores architecto ex ad, laudantium quibusdam
-                        corrupti?
-                        Fuga quos alias molestiae. Id veniam incidunt dolore neque.
+                        {{about_game_text}}
                     </h3>
                 </div>
 
@@ -74,7 +67,7 @@
                             {%
                             include 'slider_slide.html'
                             with {
-                            'enemy_pict': 'BotWheel.png',
+                            'enemy_pict': 'creatures/enemies/BotWheel.png',
                             'enemy_name': "Bot Wheel",
                             'enemy_description': "haha",
                             'enemy_gif1': 'BotWheel.gif',
@@ -87,7 +80,7 @@
                             {%
                             include 'slider_slide.html'
                             with {
-                            'enemy_pict': 'AssaultDroid.png',
+                            'enemy_pict': 'creatures/enemies/AssaultDroid.png',
                             'enemy_name': "Assault Droid",
                             'enemy_description': "nice droid",
                             'enemy_gif1': 'BotWheel.gif',
@@ -101,12 +94,12 @@
                             {%
                             include 'slider_slide.html'
                             with {
-                            'enemy_pict': 'Police.png',
+                            'enemy_pict': 'creatures/enemies/Police.png',
                             'enemy_name': "Police",
                             'enemy_description': "виу виу виу",
-                            'enemy_gif1': 'BabyBoxer.gif',
-                            'enemy_gif2': 'BabyBoxer.gif',
-                            'enemy_gif3': 'BabyBoxer.gif'
+                            'enemy_gif1': 'BotWheel.gif',
+                            'enemy_gif2': 'BotWheel.gif',
+                            'enemy_gif3': 'BotWheel.gif'
                             }
                             %}
 
@@ -114,16 +107,12 @@
                         </div>
 
 
-                        <!-- СТРЕЛКИ -->
-                        <div class='slide_button swiper-button-prev'>
-                            <img src='../My-Game-Site/assets/pictures/decor/left_arrow.png' alt="">
-
-                        </div>
-
-                        <div class='slide_button swiper-button-next'>
-                            <img src='../My-Game-Site/assets/pictures/decor/right_arrow.png' alt="">
-
-                        </div>
+                        {%
+                        include 'arrows.html' with {
+                        'left_arrow_pict': 'left_arrow.png',
+                        'right_arrow_pict' : 'right_arrow.png'
+                        }
+                        %}
                     </div>
                 </div>
 
@@ -149,55 +138,37 @@
                         <div class='swiper-wrapper'>
 
                             <!-- СЛАЙД ОРУЖИЯ №1 -->
-                            <div class='swiper-slide'>
-                                <div class='weapon_info'>
-                                    <img class='weapon_slider_picture'
-                                        src='../My-Game-Site/assets/pictures/weapon/GoldSword.png' alt="">
+                            {%
+                            include 'slider_simple_slide.html'
+                            with {
+                            'enemy_pict': 'weapon/GoldSword.png',
+                            'enemy_name': "Illusion",
+                            'enemy_description': "nice sword",
+                            }
+                            %}
+
+                            <!-- СЛАЙД ОРУЖИЯ №2 -->
+                            {%
+                            include 'slider_simple_slide.html'
+                            with {
+                            'enemy_pict': 'weapon/BigBoy.png',
+                            'enemy_name': "BIG BOY",
+                            'enemy_description': "big sword",
+                            }
+                            %}
 
 
-                                    <div class='enemy_name'>
-                                        <h4 class='enemy_name_text'>Illusion</h4>
-                                    </div>
-
-                                    <div class='about_enemy'>
-                                        <h5 class='about_enemy_text'>long sword</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- СЛАЙД ОРУЖИЯ №1 -->
-                            <div class='swiper-slide'>
-                                <div class='weapon_info'>
-                                    <img class='weapon_slider_picture'
-                                        src='../My-Game-Site/assets/pictures/weapon/BigBoy.png' alt="">
-
-
-                                    <div class='enemy_name'>
-                                        <h4 class='enemy_name_text'>BIG BOY</h4>
-                                    </div>
-
-                                    <div class='about_enemy'>
-                                        <h5 class='about_enemy_text'>big sword</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- СТРЕЛКИ -->
-                        <div class='slide_button swiper-button-prev'>
-                            <img src='../My-Game-Site/assets/pictures/decor/left_arrow.png' alt="">
-
-                        </div>
-
-                        <div class='slide_button swiper-button-next'>
-                            <img src='../My-Game-Site/assets/pictures/decor/right_arrow.png' alt="">
-
+                            <!-- СТРЕЛКИ -->
+                            {%
+                            include 'arrows.html' with {
+                            'left_arrow_pict': 'left_arrow.png',
+                            'right_arrow_pict' : 'right_arrow.png'
+                            }
+                            %}
                         </div>
                     </div>
-                </div>
 
-            </div>
+                </div>
         </section>
 
 
@@ -230,7 +201,7 @@
                     <div class='play_button_container'>
                         <input class='play_button_image' type='image'
                             src='../My-Game-Site/assets/pictures/decor/button_game.png' alt="">
-                        <p class='play_button_text'>Играть</p>
+                        <p class='play_button_text'>{{play_button_text}}</p>
                     </div>
                 </div>
 
