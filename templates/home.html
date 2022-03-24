@@ -8,10 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-    <link rel='shortcut icon' href='../My-Game-Site/assets/pictures/icons/chest.png' type='image/x-icon'>
+    <link rel='shortcut icon' href='{{base_path}}/assets/pictures/icons/chest.png' type='image/x-icon'>
 
-    <link rel="stylesheet" href="../My-Game-Site/assets/styles/main.css">
-    <link rel='stylesheet' href='../My-Game-Site/assets/styles/fonts.css'>
+    <link rel="stylesheet" href="{{base_path}}/assets/styles/main.css">
+    <link rel='stylesheet' href='{{base_path}}/assets/styles/fonts.css'>
     <link rel="stylesheet" href="https://unpkg.com/swiper@6/swiper-bundle.min.css">
 </head>
 
@@ -71,134 +71,44 @@
                         <div class='swiper-wrapper'>
 
                             <!-- СЛАЙД СУЩЕСТВА №1 -->
-                            <div class='swiper-slide'>
-                                <div class='enemy_card'>
-                                    <div class='enemy_info'>
-                                        <img class='slider_picture'
-                                            src='../My-Game-Site/assets/pictures/creatures/enemies/BotWheel.png' alt="">
-
-                                        <div class='enemy_name'>
-                                            <h4 class='enemy_name_text'>Bot Wheel</h4>
-                                        </div>
-
-                                        <div class='about_enemy'>
-                                            <h5 class='about_enemy_text'>hello</h5>
-                                        </div>
-                                    </div>
-
-                                    <div class='enemy_anim_container'>
-                                        <ul>
-                                            <li>
-                                                <div class='enemy_anim_background'>
-                                                    <img class='enemy_anim'
-                                                        src='../My-Game-Site/assets/pictures/gifs/BotWheel.gif' alt="">
-                                                </div>
-
-                                            </li>
-                                            <li>
-                                                <div class='enemy_anim_background'>
-                                                    <img class='enemy_anim'
-                                                        src='../My-Game-Site/assets/pictures/gifs/BotWheel.gif' alt="">
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class='enemy_anim_background'>
-                                                    <img class='enemy_anim'
-                                                        src='../My-Game-Site/assets/pictures/gifs/BotWheel.gif' alt="">
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            {%
+                            include 'slider_slide.html'
+                            with {
+                            'enemy_pict': 'BotWheel.png',
+                            'enemy_name': "Bot Wheel",
+                            'enemy_description': "haha",
+                            'enemy_gif1': 'BotWheel.gif',
+                            'enemy_gif2': 'BotWheel.gif',
+                            'enemy_gif3': 'BotWheel.gif'
+                            }
+                            %}
 
                             <!-- СЛАЙД СУЩЕСТВА №2 -->
-                            <div class='swiper-slide'>
-                                <div class='enemy_info'>
-                                    <img class='slider_picture'
-                                        src='../My-Game-Site/assets/pictures/creatures/enemies/AssaultDroid.png' alt="">
-
-                                    <div class='enemy_name'>
-                                        <h4 class='enemy_name_text'>Assault Droid</h4>
-                                    </div>
-
-                                    <div class='about_enemy'>
-                                        <h5 class='about_enemy_text'>hi there</h5>
-                                    </div>
-
-                                    <div class='enemy_anim_container'>
-                                        <ul>
-                                            <li>
-                                                <div class='enemy_anim_background'>
-                                                    <img class='enemy_anim'
-                                                        src='../My-Game-Site/assets/pictures/gifs/BotWheel.gif' alt="">
-
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class='enemy_anim_background'>
-                                                    <img class='enemy_anim'
-                                                        src='../My-Game-Site/assets/pictures/gifs/BotWheel.gif' alt="">
-
-                                                </div>
-                                            <li>
-                                                <div class='enemy_anim_background'>
-                                                    <img class='enemy_anim'
-                                                        src='../My-Game-Site/assets/pictures/gifs/BotWheel.gif' alt="">
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            {%
+                            include 'slider_slide.html'
+                            with {
+                            'enemy_pict': 'AssaultDroid.png',
+                            'enemy_name': "Assault Droid",
+                            'enemy_description': "nice droid",
+                            'enemy_gif1': 'BotWheel.gif',
+                            'enemy_gif2': 'BotWheel.gif',
+                            'enemy_gif3': 'BotWheel.gif'
+                            }
+                            %}
 
 
                             <!-- СЛАЙД СУЩЕСТВА №3 -->
-                            <div class='swiper-slide'>
-                                <div class='enemy_info'>
-                                    <img class='slider_picture'
-                                        src='../My-Game-Site/assets/pictures/creatures/enemies/Police.png' alt="">
-
-
-                                    <div class='enemy_name'>
-                                        <h4 class='enemy_name_text'>Police</h4>
-                                    </div>
-
-                                    <div class='about_enemy'>
-                                        <h5 class='about_enemy_text'>i hate this slider</h5>
-                                    </div>
-
-                                    <div class='enemy_anim_container'>
-                                        <ul>
-                                            <li>
-                                                <div class='enemy_anim_background'>
-                                                    <img class='enemy_anim'
-                                                        src='../My-Game-Site/assets/pictures/gifs/BotWheel.gif' alt="">
-
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class='enemy_anim_background'>
-                                                    <img class='enemy_anim'
-                                                        src='../My-Game-Site/assets/pictures/gifs/BotWheel.gif' alt="">
-
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class='enemy_anim_background'>
-                                                    <img class='enemy_anim'
-                                                        src='../My-Game-Site/assets/pictures/gifs/BotWheel.gif' alt="">
-
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
+                            {%
+                            include 'slider_slide.html'
+                            with {
+                            'enemy_pict': 'Police.png',
+                            'enemy_name': "Police",
+                            'enemy_description': "виу виу виу",
+                            'enemy_gif1': 'BabyBoxer.gif',
+                            'enemy_gif2': 'BabyBoxer.gif',
+                            'enemy_gif3': 'BabyBoxer.gif'
+                            }
+                            %}
 
 
                         </div>
