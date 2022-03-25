@@ -1,4 +1,4 @@
-{% extends "slider_simple_slide.html" %}
+{% extends "slider/slider_simple_slide.html" %}
 
 
 {% block picture %}
@@ -18,18 +18,18 @@
     <ul>
         <li>
             <div class='enemy_anim_background'>
-                <img class='enemy_anim' src='../My-Game-Site/assets/pictures/gifs/{{enemy_gif1}}' alt="">
+                <img class='enemy_anim' src='{{base_path}}/assets/pictures/gifs/{{enemy_gif1}}' alt="">
             </div>
 
         </li>
         <li>
             <div class='enemy_anim_background'>
-                <img class='enemy_anim' src='../My-Game-Site/assets/pictures/gifs/{{enemy_gif2}}' alt="">
+                <img class='enemy_anim' src='{{base_path}}/assets/pictures/gifs/{{enemy_gif2}}' alt="">
             </div>
         </li>
         <li>
             <div class='enemy_anim_background'>
-                <img class='enemy_anim' src='../My-Game-Site/assets/pictures/gifs/{{enemy_gif3}}' alt="">
+                <img class='enemy_anim' src='{{base_path}}/assets/pictures/gifs/{{enemy_gif3}}' alt="">
             </div>
         </li>
     </ul>

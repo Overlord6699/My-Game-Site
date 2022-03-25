@@ -1,0 +1,26 @@
+.footer_container{
+    display: flex;
+  
+    background: #23252B;
+}
+  
+.footer_content{
+    display: flex;
+}
+  
+.footer_icons_container{
+    display: flex;
+    list-style: none;
+    height: 65px;
+}
+
+.social_media_icon{
+    height: 60px;
+    width: 60px;
+  
+    opacity: 0.8;
+}
+  
+.social_media_icon:hover{
+    opacity: 1;
+}

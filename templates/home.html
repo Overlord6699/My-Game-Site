@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{%
-include 'blocks/head.html' with{
-'icon_pict': 'chest.png',
-'page_style_name': 'main',
-'hasHeader': true,
-'hasFooter': true,
-'hasSlider': true
-}
-%}
+<head>
+    <!-- <base href="https://overlord6699.github.io/My-Game-Site"> -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+    <link rel='shortcut icon' href='{{base_path}}/assets/pictures/icons/chest.png' type='image/x-icon'>
+
+
+    <link rel="stylesheet" href="{{base_path}}/assets/styles/header.css">
+
+
+    <link rel="stylesheet" href="{{base_path}}/assets/styles/footer.css">
+
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@6/swiper-bundle.min.css">
+
+
+    <link rel="stylesheet" href="{{base_path}}/assets/styles/main.css">
+    <link rel='stylesheet' href='{{base_path}}/assets/styles/fonts.css'>
+
+    <title>{{page_name}}</title>
+</head>
 
 <body>
 
@@ -28,13 +44,13 @@ include 'blocks/head.html' with{
             <div class='page-2_content'>
 
                 <div class='about_game_start'>
-                    <img class='about_game_img' src='../My-Game-Site/assets/pictures/decor/about_game_left.png' alt="">
+                    <img class='about_game_img' src='{{base_path}}/assets/pictures/decor/about_game_left.png' alt="">
 
                     <div class='about_game'>
                         <h2>Об игре</h2>
                     </div>
 
-                    <img class='about_game_img' src='../My-Game-Site/assets/pictures/decor/about_game_left.png' alt="">
+                    <img class='about_game_img' src='{{base_path}}/assets/pictures/decor/about_game_left.png' alt="">
                 </div>
 
                 <div class='about_game_text_container'>
@@ -44,7 +60,7 @@ include 'blocks/head.html' with{
                 </div>
 
                 <div class='trapezoid_text_container'>
-                    <img class='trapezoid_container' src='../My-Game-Site/assets/pictures/decor/trapezoid.png' alt="">
+                    <img class='trapezoid_container' src='{{base_path}}/assets/pictures/decor/trapezoid.png' alt="">
                     <p class='trapezoid_text'>
                         Существа
                     </p>
@@ -62,7 +78,7 @@ include 'blocks/head.html' with{
 
                             <!-- СЛАЙД СУЩЕСТВА №1 -->
                             {%
-                            include 'slider_slide.html'
+                            include 'slider/slider_slide.html'
                             with {
                             'enemy_pict': 'creatures/enemies/BotWheel.png',
                             'enemy_name': "Bot Wheel",
@@ -75,7 +91,7 @@ include 'blocks/head.html' with{
 
                             <!-- СЛАЙД СУЩЕСТВА №2 -->
                             {%
-                            include 'slider_slide.html'
+                            include 'slider/slider_slide.html'
                             with {
                             'enemy_pict': 'creatures/enemies/AssaultDroid.png',
                             'enemy_name': "Assault Droid",
@@ -89,7 +105,7 @@ include 'blocks/head.html' with{
 
                             <!-- СЛАЙД СУЩЕСТВА №3 -->
                             {%
-                            include 'slider_slide.html'
+                            include 'slider/slider_slide.html'
                             with {
                             'enemy_pict': 'creatures/enemies/Police.png',
                             'enemy_name': "Police",
@@ -105,7 +121,7 @@ include 'blocks/head.html' with{
 
 
                         {%
-                        include 'arrows.html' with {
+                        include 'blocks/arrows.html' with {
                         'left_arrow_pict': 'left_arrow.png',
                         'right_arrow_pict' : 'right_arrow.png'
                         }
@@ -121,7 +137,7 @@ include 'blocks/head.html' with{
         <section class='page page-4'>
             <div class='page-4_content'>
                 <div class='trapezoid_text_container'>
-                    <img class='trapezoid_container' src='../My-Game-Site/assets/pictures/decor/trapezoid.png' alt="">
+                    <img class='trapezoid_container' src='{{base_path}}/assets/pictures/decor/trapezoid.png' alt="">
 
                     <p class='trapezoid_text'>
                         Оружие
@@ -136,7 +152,7 @@ include 'blocks/head.html' with{
 
                             <!-- СЛАЙД ОРУЖИЯ №1 -->
                             {%
-                            include 'slider_simple_slide.html'
+                            include 'slider/slider_simple_slide.html'
                             with {
                             'enemy_pict': 'weapon/GoldSword.png',
                             'enemy_name': "Illusion",
@@ -146,7 +162,7 @@ include 'blocks/head.html' with{
 
                             <!-- СЛАЙД ОРУЖИЯ №2 -->
                             {%
-                            include 'slider_simple_slide.html'
+                            include 'slider/slider_simple_slide.html'
                             with {
                             'enemy_pict': 'weapon/BigBoy.png',
                             'enemy_name': "BIG BOY",
@@ -157,7 +173,7 @@ include 'blocks/head.html' with{
 
                             <!-- СТРЕЛКИ -->
                             {%
-                            include 'arrows.html' with {
+                            include 'blocks/arrows.html' with {
                             'left_arrow_pict': 'left_arrow.png',
                             'right_arrow_pict' : 'right_arrow.png'
                             }
@@ -172,7 +188,7 @@ include 'blocks/head.html' with{
         <section class='page page-5'>
             <div class='page-5_content'>
 
-                <img class='finish_line' src='../My-Game-Site/assets/pictures/decor/finish_line.png' alt="">
+                <img class='finish_line' src='{{base_path}}/assets/pictures/decor/finish_line.png' alt="">
 
 
                 <h5 class="trailer_text">Трейлер игры</h5>
@@ -180,24 +196,24 @@ include 'blocks/head.html' with{
                 <div class="video_container">
                     <div class="video_preview active" id="preview1">
                         <button type="button" onclick="video1Start()" class="video-play-button">
-                            <img src="../My-Game-Site/assets/pictures/icons/play_video_button.png" alt="">
+                            <img src="{{base_path}}/assets/pictures/icons/play_video_button.png" alt="">
                         </button>
 
                         <figure>
-                            <img src="../My-Game-Site/assets/pictures/trailer.jpg" alt="">
+                            <img src="{{base_path}}/assets/pictures/trailer.jpg" alt="">
                         </figure>
                     </div>
-                    <video class="" id="video1" src="../My-Game-Site/assets/video/trailer.webm" controls></video>
+                    <video class="" id="video1" src="{{base_path}}/assets/video/trailer.webm" controls></video>
                 </div>
 
 
                 <div class='portal_container'>
-                    <img class='portal_anim' src='../My-Game-Site/assets/pictures/gifs/portal.gif' alt="">
+                    <img class='portal_anim' src='{{base_path}}/assets/pictures/gifs/portal.gif' alt="">
 
 
                     <div class='play_button_container'>
                         <input class='play_button_image' type='image'
-                            src='../My-Game-Site/assets/pictures/decor/button_game.png' alt="">
+                            src='{{base_path}}/assets/pictures/decor/button_game.png' alt="">
                         <p class='play_button_text'>{{play_button_text}}</p>
                     </div>
                 </div>
@@ -221,8 +237,9 @@ include 'blocks/head.html' with{
     </main>
 
     <script src="https://unpkg.com/swiper@6/swiper-bundle.min.js"></script>
-    <script src='../My-Game-Site/assets/js/slider/slider.js'></script>
-    <script src='../My-Game-Site/assets/js/videoplayer.js'></script>
+    <script src='{{base_path}}/assets/js/slider/slider.js'></script>
+    <script src='{{base_path}}/assets/js/videoplayer.js'></script>
+    <script src='{{base_path}}/assets/js/burger.js'></script>
 </body>
 
 </html>

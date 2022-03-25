@@ -9,12 +9,12 @@ $footer = $twig->loadTemplate('blocks/footer.html');
 $entered = true;
 
 echo $header->render(array(
-    'page_name' => 'Магазин',
-    'enterered' => $entered
+    'enterered' => $entered,
 ));
 
 echo $templ->render(array(
-    'base_path' => ''
+    'page_name' => 'Магазин',
+    'base_path' => '',
 ));
 
 echo $footer->render(array());

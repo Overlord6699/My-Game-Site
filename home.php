@@ -12,11 +12,11 @@ $hasHeader = true;
 $hasFooter = true;
 
 echo $header->render(array(
-    'page_name' => 'Главная',
     'enterered' => $entered,
 ));
 
 echo $templ->render(array(
+    'page_name' => 'Главная',
     'base_path' => '',
     'welcome_text' => 'Добро пожаловать на главную страницу игры',
     'about_game_text' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -27,9 +27,7 @@ echo $templ->render(array(
     Nostrum sit consectetur deleniti mollitia, nulla dolores architecto ex ad, laudantium quibusdam
     corrupti?
     Fuga quos alias molestiae. Id veniam incidunt dolore neque.',
-    'play_button_text' => 'Играть',
-    'hasHeader' => $hasHeader,
-    'hasFooter' => $hasFooter
+    'play_button_text' => 'Играть'
 ));
 
 echo $footer->render(array());
