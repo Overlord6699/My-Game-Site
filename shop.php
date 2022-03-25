@@ -13,6 +13,8 @@ echo $header->render(array(
     'enterered' => $entered
 ));
 
-echo $templ->render(array());
+echo $templ->render(array(
+    'base_path' => ''
+));
 
 echo $footer->render(array());
