@@ -6,7 +6,7 @@
     <header id='header' class='header lock-padding flex'>
         <div class='navbar'>
             <div class='left_header'>
-                <img class='nav_icon' src='assets/pictures/icons/header_icon.png' alt="">
+                <img class='nav_icon' src='../My-Game-Site/assets/pictures/icons/header_icon.png' alt="">
 
                 <div class='menu_container'>
                     <nav>
@@ -25,7 +25,11 @@
                 </div>
             </div>
 
-            <img class='nav_icon_login' src='assets/pictures/icons/entry.png' alt="">
+            {% if entered == true %}
+            <img class='nav_icon_login' src='../My-Game-Site/assets/pictures/icons/entry.png' alt="">
+            {% else %}
+            <img class='nav_icon_login' src='../My-Game-Site/assets/pictures/icons/noEntry.png' alt="">
+            {% endif %}
         </div>
     </header>
 </div>

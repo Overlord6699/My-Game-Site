@@ -1,14 +1,18 @@
 <?php
-$title = 'Магазин';
-require "blocks/header.php";
 
-?>
+include "config.php";
 
-<link rel="stylesheet" href="./assets/styles/shop.css">
+$header = $twig->loadTemplate('blocks/header.html');
+$templ = $twig->loadTemplate('shop.html');
+$footer = $twig->loadTemplate('blocks/footer.html');
 
-<div class='main_block'>
-    <h1>Добро пожаловать на страницу покупок</h1>
-</div>
+$entered = true;
 
+echo $header->render(array(
+    'page_name' => 'Магазин',
+    'enterered' => $entered
+));
 
-<?php require "blocks/footer.php"; ?>
+echo $templ->render(array());
+
+echo $footer->render(array());

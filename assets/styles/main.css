@@ -347,6 +347,7 @@ body.lock{
   width: 50px;
   margin-top: 5px;
   margin-right: 20px;
+  border-radius: 22px;
 }
 
 .game_name_text{

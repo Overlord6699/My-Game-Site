@@ -2,15 +2,17 @@
 
 include "config.php";
 
-
-
 $header = $twig->loadTemplate('blocks/header.html');
 $templ = $twig->loadTemplate('home.html');
 $footer = $twig->loadTemplate('blocks/footer.html');
 
-$slide = $twig->loadTemplate('slider_slide.html');
+$entered = true;
 
-echo $header->render(array('page_name' => 'Главная'));
+echo $header->render(array(
+    'page_name' => 'Главная',
+    'enterered' => $entered
+));
+
 echo $templ->render(array(
     'base_path' => '../My-Game-Site',
     'welcome_text' => 'Добро пожаловать на главную страницу игры',
@@ -24,5 +26,5 @@ echo $templ->render(array(
     Fuga quos alias molestiae. Id veniam incidunt dolore neque.',
     'play_button_text' => 'Играть'
 ));
-//echo $slide->render(array());
+
 echo $footer->render(array());
