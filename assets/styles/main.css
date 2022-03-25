@@ -453,6 +453,8 @@ body.lock{
   width: 90px;
   height: 90px;
   opacity: 0.8;
+
+  cursor: pointer;
 }
 
 .video-play-button img:hover{
