@@ -2,15 +2,27 @@
 
 namespace Twig;
 
-use Twig\Extension\AbstractExtension;
+use Psr\Http\Message\ServerRequestInterface;
+use \Twig\Extension\AbstractExtension;
 
 class AssetExtension extends AbstractExtension
 {
 
+    private $request;
+
+    public function __construct(ServerRequestInterface $request)
+    {
+        $this->request = $request;
+    }
+
     public function getFunctions()
     {
         //name and callback
-        return [new TwigFunction('asset_url', [$this, 'getAssetUrl'])];
+        return [
+            new TwigFunction('asset_url', [$this, 'getAssetUrl']),
+            new TwigFunction('base_url', [$this, 'getBaseUrl']),
+            new TwigFunction('url', [$this, 'getUrl'])
+        ];
     }
 
     public function getAssetUrl(string $path): string
@@ -18,8 +30,16 @@ class AssetExtension extends AbstractExtension
         return $this->getBaseUrl() . $path;
     }
 
+    //например для домашней страницы
     public function getBaseUrl(): string
     {
-        return "dfgd";
+        $params = $this->request->getServerParams();
+
+        return $params['REQUEST_SCHEME'] . '://' . $params['HTTP_HOST'] . '/';
+    }
+
+    public function getUrl(string $path): string
+    {
+        return $this->getBaseUrl() . $path;
     }
 }

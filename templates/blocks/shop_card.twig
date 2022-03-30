@@ -1,0 +1,44 @@
+<div class="shop_card">
+    <img class='card_border' src='{{base_path}}/assets/pictures/shop/card/рамка.png' alt=""></img>
+
+    {% block borders %}
+    <!-- квадратики по краям -->
+    <ul class='borders'>
+        <ul class="borders_group">
+            <li class='border border1'></li>
+            <li class='border border2'></li>
+        </ul>
+        <ul class="borders_group">
+            <li class='border border3'></li>
+            <li class='border border4'></li>
+        </ul>
+    </ul>
+    {% endblock %}
+
+
+    <a class="link" href="shop/product">
+        <figure class='card_info pointer'>
+            {% block back_pict %}
+            <img class='back_picture back_pict_hover resizeful_back_pict'
+                src="{{base_path}}/assets/pictures/shop/card/{{card_back_pict}}" alt=""></img>
+            {% endblock %}
+
+
+
+            {% block card_picture %}
+            <div class='product_pict_container'>
+                <img class='product_picture scalable_pict' src="{{base_path}}/assets/pictures/shop/{{card_pict}}"
+                    alt="">
+            </div>
+            {% endblock %}
+
+
+            {%block card_text %}
+            <figcaption class='card_text_container'>
+                <p class='card_text'>{{card_name}}</p>
+            </figcaption>
+            {% endblock %}
+        </figure>
+    </a>
+
+</div>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <!-- <base href="https://overlord6699.github.io/My-Game-Site"> -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+    <link rel='shortcut icon' href='{{base_path}}/assets/pictures/icons/chest.png' type='image/x-icon'>
+
+
+    <link rel="stylesheet" href="{{base_path}}/assets/styles/header.css">
+
+
+    <link rel="stylesheet" href="{{base_path}}/assets/styles/footer.css">
+
+
+    <link rel="stylesheet" href="{{base_path}}/assets/styles/product_page.css">
+
+    <link rel='stylesheet' href='{{base_path}}/assets/styles/fonts.css'>
+    <link rel="stylesheet" href="{{base_path}}/assets/styles/heart_icon.css">
+
+    <title>{{page_name}}</title>
+</head>
+
+<body>
+    <main>
+        <section>
+            <div class="page page-1">
+                
+            {% 
+            include "blocks/product.twig" with{
+                "product_title": "Котик",
+                "product_price": "10000$",
+                "product_description" : "Вы созерцаете прекрасное создание - Котика. Возьмите
+                                    Котика
+                                    с собой, и он станет вашим верным другом. Может быть, он даже спасёт вашу жизнь? С
+                                    таким
+                                    компаньоном игровой процесс станет ещё
+                                    интереснее.",
+                "product_features": "НУ ПРОСТО МИЛАЯ БУЛОЧКА",
+
+            }
+            %}
+
+            </div>
+        </section>
+    </main>
+</body>

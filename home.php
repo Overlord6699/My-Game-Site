@@ -1,10 +1,12 @@
 <?php
 
-include "config.php";
+include "config/config.php";
 
-$header = $twig->loadTemplate('blocks/header.html');
-$templ = $twig->loadTemplate('home.html');
-$footer = $twig->loadTemplate('blocks/footer.html');
+
+
+$header = $view->loadTemplate('blocks/header.twig');
+$templ = $view->loadTemplate('home.twig');
+$footer = $view->loadTemplate('blocks/footer.twig');
 
 $entered = true;
 
@@ -12,7 +14,7 @@ $hasHeader = true;
 $hasFooter = true;
 
 echo $header->render(array(
-    'enterered' => $entered,
+    'entered' => $entered,
 ));
 
 echo $templ->render(array(

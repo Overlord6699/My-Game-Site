@@ -10,10 +10,10 @@ AddCharset UTF-8 .html
 Header set X-Content-Type-Options nosniff
 
 
-<Files check_login.php>
-    Order Deny,Allow
-    Deny From All
-</Files>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
 
 
 #error pages

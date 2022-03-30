@@ -1,5 +1,14 @@
 {
     "require": {
-        "twig/twig": "1.*"
+        "twig/twig": "1.*",
+        "slim/slim": "4.*",
+        "slim/psr7": "^0.6.0",
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "MySite\\": "src/",
+            "Twig\\": "src/"
+        }
     }
 }

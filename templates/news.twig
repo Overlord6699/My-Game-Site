@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <!-- <base href="https://overlord6699.github.io/My-Game-Site"> -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+    <link rel='shortcut icon' href='{{base_path}}/assets/pictures/icons/chest.png' type='image/x-icon'>
+
+
+    <link rel="stylesheet" href="{{base_path}}/assets/styles/header.css">
+
+
+    <link rel="stylesheet" href="{{base_path}}/assets/styles/footer.css">
+
+
+    <link rel="stylesheet" href="{{base_path}}/assets/styles/news.css">
+    <link rel='stylesheet' href='{{base_path}}/assets/styles/fonts.css'>
+
+    <title>{{page_name}}</title>
+</head>
+
+<body>
+    <main>
+        <div class="page page-1">
+            <div class='page_1_content'>
+                <div class='last_news_container'>
+                    <h1 class="last_news_text">
+                        <nobr>ПОСЛЕДНИЕ НОВОСТИ</nobr>
+                    </h1>
+                </div>
+
+
+                {%
+                include "blocks/news_block.twig" with{
+                "posts" : "posts",
+                "reversed": false
+                }
+                %}       
+
+<!--
+                {%
+                include "blocks/news_block.twig" with{
+                "news_title": "Добавлен новый противник",
+                "news_text": "короче ваще дикий чел, который надерёт вам жопу и вы пойдёте с агрессией, трясущимися
+                руками и скрипящими зубами плакаться мамочке",
+                "news_date": "20 march 2077",
+                "news_pict": "news.png",
+                "reversed": false
+                }
+                %}
+
+                {%
+                include "blocks/news_block.twig" with{
+                "news_title": "Добавлен новый питомец",
+                "news_text": "короче эту жестянку зовут мусорщик и он готов кататься за вами и собирать всякий хлам",
+                "news_date": "20 march 2088",
+                "news_pict": "GarbageBot.png",
+                "reversed": "true"
+                }
+                %}
+
+                -->
+            </div>
+        </div>
+    </main>
+</body>

@@ -1,15 +1,15 @@
 <?php
 
-include "config.php";
+include "config/config.php";
 
-$header = $twig->loadTemplate('blocks/header.html');
-$templ = $twig->loadTemplate('shop.html');
-$footer = $twig->loadTemplate('blocks/footer.html');
+$header = $view->loadTemplate('blocks/shop_header.twig');
+$templ = $view->loadTemplate('shop.twig');
+$footer = $view->loadTemplate('blocks/footer.twig');
 
 $entered = true;
 
 echo $header->render(array(
-    'enterered' => $entered,
+    'entered' => $entered,
 ));
 
 echo $templ->render(array(

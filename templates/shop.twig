@@ -19,9 +19,6 @@
     <link rel="stylesheet" href="{{base_path}}/assets/styles/footer.css">
 
 
-    <link rel="stylesheet" href="https://unpkg.com/swiper@6/swiper-bundle.min.css">
-
-
     <link rel="stylesheet" href="{{base_path}}/assets/styles/shop.css">
     <link rel='stylesheet' href='{{base_path}}/assets/styles/fonts.css'>
 
@@ -32,20 +29,20 @@
     <main>
         <section class="page page-1">
             <div class="search_container">
-                <img class='search_pict' src='{{base_path}}/assets/pictures/icons/search.png' alt=''></img>
+                <img class='search_pict pointer' src='{{base_path}}/assets/pictures/icons/search.png' alt=''></img>
                 <div class="search_text">
                     <p>Поиск</p>
                 </div>
             </div>
 
-            {% include 'blocks/shop_category.html' with{
+            {% include 'blocks/shop_category.twig' with{
             'category_name': 'Питомцы'
             }
             %}
 
             <ul class='products'>
                 <li>
-                    {% include 'blocks/shop_card.html' with{
+                    {% include 'blocks/shop_card.twig' with{
                     'card_name': "кот",
                     'card_back_pict': 'сетка.png',
                     'card_pict': 'cat.png'
@@ -54,7 +51,7 @@
                 </li>
 
                 <li>
-                    {% include 'blocks/shop_card.html' with{
+                    {% include 'blocks/shop_card.twig' with{
                     'card_name': "кошка",
                     'card_back_pict': 'сетка.png',
                     'card_pict': 'cat.png'
@@ -63,7 +60,7 @@
                 </li>
 
                 <li>
-                    {% include 'blocks/shop_card.html' with{
+                    {% include 'blocks/shop_card.twig' with{
                     'card_name': "кот",
                     'card_back_pict': 'сетка.png',
                     'card_pict': 'cat.png'
@@ -72,7 +69,7 @@
                 </li>
 
                 <li>
-                    {% include 'blocks/shop_card.html' with{
+                    {% include 'blocks/shop_card.twig' with{
                     'card_name': "мусорщик",
                     'card_back_pict': 'сетка.png',
                     'card_pict': 'garbageBot.png'
@@ -81,7 +78,7 @@
                 </li>
 
                 <li>
-                    {% include 'blocks/shop_card.html' with{
+                    {% include 'blocks/shop_card.twig' with{
                     'card_name': "мусорщик",
                     'card_back_pict': 'сетка.png',
                     'card_pict': 'garbageBot.png'
@@ -92,14 +89,14 @@
         </section>
 
         <section class="page page-2">
-            {% include 'blocks/shop_category.html' with{
+            {% include 'blocks/shop_category.twig' with{
             'category_name': 'Оружие'
             }
             %}
 
             <ul class="products">
                 <li>
-                    {% include 'blocks/shop_volume_card.html' with{
+                    {% include 'blocks/shop_volume_card.twig' with{
                     'base_path': '..',
                     'card_pict':'rifle.png',
                     'card_name':'Винтовка'
@@ -108,7 +105,7 @@
                 </li>
 
                 <li>
-                    {% include 'blocks/shop_volume_card.html' with{
+                    {% include 'blocks/shop_volume_card.twig' with{
                     'base_path': '..',
                     'card_pict':'rifle.png',
                     'card_name':'не Винтовка'

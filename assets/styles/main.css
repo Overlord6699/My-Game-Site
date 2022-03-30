@@ -15,12 +15,26 @@
 .weapon_slider_picture{
   max-width: 779px;
   height: 373px;
+  
   object-fit: contain;
 }
 
 .slide_button{
   margin-left: 100px;
   margin-right: 100px;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+  line-height: 1;
+}
+
+
+.swiper-button-next:after, .swiper-container-rtl .swiper-button-prev:after {
+  content: '';
+}
+
+.swiper-button-prev:after, .swiper-container-rtl .swiper-button-prev:after {
+  content: '';
 }
 
 .finish_line{

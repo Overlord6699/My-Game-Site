@@ -3,12 +3,19 @@
     padding: 0;
     box-sizing: border-box;
 }
-  
+
+.pointer{
+    cursor: pointer;
+}
 
 body{
     overflow-x: hidden;
 }
   
+.link{
+    position: absolute;
+}
+
 main{
     background-image: url('../pictures/background/fon.png');
     background-repeat: repeat-y;
@@ -34,14 +41,22 @@ main{
 .search_container{
     display: flex;
     justify-content: flex-start;
-
-    width: 617px;
+   
+    margin-top: 7%;
+    margin-left: 50%;
+    margin-right: 10%;
     height: 54px;
-    margin-top: 50px;
-    margin-left: 900px;
+    max-width: 530px;
 
     background: #0F1113;
     border: 2px solid violet;
+    opacity: 0.7;
+
+    cursor: text;
+}
+
+.search_container:hover{
+    opacity: 1;
 }
 
 .search_pict{
@@ -92,7 +107,7 @@ main{
     background-color: #BDD1D1;
     height: 6px;
     width: 30%;
-    bottom: -20px;
+    bottom: -10px;
     left: 0;
 
 }
@@ -159,6 +174,15 @@ main{
     height: 258px;
 }
 
+.card_info:hover .scalable_pict {
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+.card_info:hover .back_pict_hover {
+    opacity: 1;
+}
+
 .back_picture{
     display: flex;
     max-width: 212px;
@@ -167,6 +191,8 @@ main{
     height: 258px;
 
     background: linear-gradient(115.7deg, #2B5876 10.42%, #4E4376 82.77%);
+
+    opacity: 0.8;
 }
 
 .back_volume_picture{
@@ -177,6 +203,7 @@ main{
     height: 258px;
 
     background: none;
+    opacity: 0.8;
 }
 
 .card_text_container{
@@ -216,6 +243,8 @@ main{
 .card_text{
     text-align: center;
 
+    width: 100%;
+
     font-family: 'Pixeloid Mono';
     font-style: normal;
     font-weight: 400;
@@ -230,10 +259,11 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 
     gap: 70px;
 
-    margin-top: 100px;
+    margin-top: 8%;
 }
 
 .products li{
@@ -261,6 +291,7 @@ main{
     justify-content: center;
     align-items: center;
     top: 0px;
+
     max-height: 184px;
     max-width: 340px;
     height: 184px;
@@ -281,5 +312,114 @@ main{
     height: 158px;
     width: 340px;
 
-    object-fit: none;
+    object-fit: contain;
+
+    transform: rotate(10deg);
+}
+
+@media(max-width:540px){
+    /* всё для карточки */
+    /*в 2 раза меньше*/
+    .shop_card{
+        max-width: 175px;
+        max-height: 195px;
+    }
+
+    .card_border {
+        max-width: 175px;
+        max-height: 195px;
+    }
+
+    .card_info{
+        max-width: 106px;
+        max-height: 129px;
+
+        margin-top: 32px;
+        margin-left: 34px;
+    }
+
+    .borders{
+        max-width: 150px;
+        max-height: 170px;
+
+        margin-top: 13px;
+        margin-left: 13px;
+        gap: 145px;
+    }
+
+    .borders_group{
+        gap: 125px;
+    }
+
+    .border{
+        max-width: 13px;
+        max-height: 13px;
+
+        background-color: #be52ef;
+    }
+
+    .resizeful_back_pict{
+        max-width: 106px;
+        max-height: 129px;
+    }
+
+    .product_pict_container{
+        max-height: 92px;
+        max-width: 106px;
+    }
+
+    .product_volume_container{
+        max-width: 170px;
+        max-height: 92px;
+    }
+
+    .product_picture{
+        max-width: 106px;
+        max-height: 92px;
+    }
+
+    .product_volume_picture{
+        max-height: 79px;
+        max-width: 170px;
+
+        margin-right: 70px;
+    }
+
+    .card_text_container{
+        max-width: 106px;
+        max-height: 37px;
+    }
+
+    .card_volume_text_container{
+        max-width: 140px;
+        max-height: 25px;
+
+        right: -17px;
+    }
+
+    .card_text{
+        font-size: 14px;
+    }
+    /* Конец карточки */
+
+    .search_text{
+        font-size: 14px;
+
+        font-size: 14px;
+        margin-top: -5px;
+        margin-left: 14px;
+    }
+
+    .section_name{
+        font-size: 25px;
+    }
+
+    .search_container{
+        max-height: 27px;
+    }
+
+    .search_pict{
+        max-width: 20px;
+        max-height: 20px;
+    }
 }

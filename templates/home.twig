@@ -36,9 +36,9 @@
                 <h1>{{welcome_text}}</h1>
             </div>
 
-            <img class='main_picture' src='{{base_path}}/assets/pictures/MainPicture.png' alt="">
+            <img class='main_picture' src='{{asset_url('/assets/pictures/MainPicture.png)}}' alt="">
         </section>
-
+g
 
         <section class='page page-2'>
             <div class='page-2_content'>
@@ -78,7 +78,7 @@
 
                             <!-- СЛАЙД СУЩЕСТВА №1 -->
                             {%
-                            include 'slider/slider_slide.html'
+                            include 'slider/slider_slide.twig'
                             with {
                             'enemy_pict': 'creatures/enemies/BotWheel.png',
                             'enemy_name': "Bot Wheel",
@@ -91,7 +91,7 @@
 
                             <!-- СЛАЙД СУЩЕСТВА №2 -->
                             {%
-                            include 'slider/slider_slide.html'
+                            include 'slider/slider_slide.twig'
                             with {
                             'enemy_pict': 'creatures/enemies/AssaultDroid.png',
                             'enemy_name': "Assault Droid",
@@ -105,7 +105,7 @@
 
                             <!-- СЛАЙД СУЩЕСТВА №3 -->
                             {%
-                            include 'slider/slider_slide.html'
+                            include 'slider/slider_slide.twig'
                             with {
                             'enemy_pict': 'creatures/enemies/Police.png',
                             'enemy_name': "Police",
@@ -121,7 +121,7 @@
 
 
                         {%
-                        include 'blocks/arrows.html' with {
+                        include 'blocks/arrows.twig' with {
                         'left_arrow_pict': 'left_arrow.png',
                         'right_arrow_pict' : 'right_arrow.png'
                         }
@@ -152,7 +152,7 @@
 
                             <!-- СЛАЙД ОРУЖИЯ №1 -->
                             {%
-                            include 'slider/slider_simple_slide.html'
+                            include 'slider/slider_simple_slide.twig'
                             with {
                             'enemy_pict': 'weapon/GoldSword.png',
                             'enemy_name': "Illusion",
@@ -162,7 +162,7 @@
 
                             <!-- СЛАЙД ОРУЖИЯ №2 -->
                             {%
-                            include 'slider/slider_simple_slide.html'
+                            include 'slider/slider_simple_slide.twig'
                             with {
                             'enemy_pict': 'weapon/BigBoy.png',
                             'enemy_name': "BIG BOY",
@@ -173,7 +173,7 @@
 
                             <!-- СТРЕЛКИ -->
                             {%
-                            include 'blocks/arrows.html' with {
+                            include 'blocks/arrows.twig' with {
                             'left_arrow_pict': 'left_arrow.png',
                             'right_arrow_pict' : 'right_arrow.png'
                             }
