@@ -2,20 +2,22 @@
 
 namespace MySite;
 
-use \PDO;
+use MySite\DBManager;
 
 class LatestPosts
 {
-    private PDO $connection;
+    private DBManager $database;
 
-    public function __construct(PDO $connection)
+    public function __construct(DBManager $database)
     {
-        $this->connection = $connection;
+        $this->database = $database;
     }
 
     public function get(int $numOfPosts): ?array
     {
-        $statement = $this->connection->prepare('SELECT * FROM post ORDER BY published_date DESC LIMIT ' . $numOfPosts);
+        $statement = $this->database->getConnection()->prepare(
+            'SELECT * FROM post ORDER BY published_date DESC LIMIT ' . $numOfPosts
+        );
 
         $statement->execute();
 

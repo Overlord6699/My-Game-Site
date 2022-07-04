@@ -2,15 +2,15 @@
     <div class='enemy_card'>
         <div class='enemy_info'>
             {% block picture %}
-            <img class='slider_picture' src='{{base_path}}/assets/pictures/{{enemy_pict}}' alt="">
+            <img class='weapon_slider_picture' src='{{base_path}}/assets/pictures/{{enemy_pict}}' alt="">
             {% endblock %}
 
             {% block name %}
-            <div class='enemy_name'>
+            <div class='weapon_name'>
                 <h4 class='enemy_name_text'>{{enemy_name}}</h4>
             </div>
             {% endblock %}
-
+        </div>
             {% block description %}
             <div class='about_enemy'>
                 <h5 class='about_enemy_text'>{{enemy_description}}</h5>
@@ -18,7 +18,6 @@
             {% endblock %}
 
             {% block animations %}
-            {% endblock %}
-        </div>
+            {% endblock %}     
     </div>
 </div>

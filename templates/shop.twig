@@ -10,112 +10,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
 
-    <link rel='shortcut icon' href='{{base_path}}/assets/pictures/icons/chest.png' type='image/x-icon'>
+    <link rel='shortcut icon' href='{{asset_url('/assets/pictures/icons/chest.png')}}' type='image/x-icon'>
 
 
-    <link rel="stylesheet" href="{{base_path}}/assets/styles/header.css">
+    <link rel="stylesheet" href="{{asset_url('/assets/styles/header.css')}}">
 
 
-    <link rel="stylesheet" href="{{base_path}}/assets/styles/footer.css">
+    <link rel="stylesheet" href="{{asset_url('/assets/styles/footer.css')}}">
 
 
-    <link rel="stylesheet" href="{{base_path}}/assets/styles/shop.css">
-    <link rel='stylesheet' href='{{base_path}}/assets/styles/fonts.css'>
+    <link rel="stylesheet" href="{{asset_url('/assets/styles/shop.css')}}">
+    <link rel='stylesheet' href='{{asset_url('/assets/styles/fonts.css')}}'>
 
     <title>{{page_name}}</title>
 </head>
 
 <body>
+    {% include "blocks/shop_header.twig" with{
+        "user": "user",
+        "busket_products": products,
+    }
+    %}
+
     <main>
         <section class="page page-1">
+         
             <div class="search_container">
-                <img class='search_pict pointer' src='{{base_path}}/assets/pictures/icons/search.png' alt=''></img>
-                <div class="search_text">
-                    <p>Поиск</p>
-                </div>
+                <img class='search_pict pointer' src='{{asset_url('/assets/pictures/icons/search.png')}}' alt='Поиск'></img>
+
+                <input class='search_text' name='search' id="search" placeholder='Что потерял?' spellchek="false">
             </div>
 
             {% include 'blocks/shop_category.twig' with{
-            'category_name': 'Питомцы'
+            'category_name': 'Питомцы',
+            "category_DBname": 'pet',
             }
             %}
 
-            <ul class='products'>
+            <ul class='products'>            
+            {% for product in products %}
+                {% if product.category == "pet" %}
                 <li>
                     {% include 'blocks/shop_card.twig' with{
-                    'card_name': "кот",
+                    'card_name': product.title,
                     'card_back_pict': 'сетка.png',
-                    'card_pict': 'cat.png'
+                    'card_pict': product.image_path,
+                    'card_url': product.url_key,
+                    'card_category': product.category,
                     }
                     %}
                 </li>
-
-                <li>
-                    {% include 'blocks/shop_card.twig' with{
-                    'card_name': "кошка",
-                    'card_back_pict': 'сетка.png',
-                    'card_pict': 'cat.png'
-                    }
-                    %}
-                </li>
-
-                <li>
-                    {% include 'blocks/shop_card.twig' with{
-                    'card_name': "кот",
-                    'card_back_pict': 'сетка.png',
-                    'card_pict': 'cat.png'
-                    }
-                    %}
-                </li>
-
-                <li>
-                    {% include 'blocks/shop_card.twig' with{
-                    'card_name': "мусорщик",
-                    'card_back_pict': 'сетка.png',
-                    'card_pict': 'garbageBot.png'
-                    }
-                    %}
-                </li>
-
-                <li>
-                    {% include 'blocks/shop_card.twig' with{
-                    'card_name': "мусорщик",
-                    'card_back_pict': 'сетка.png',
-                    'card_pict': 'garbageBot.png'
-                    }
-                    %}
-                </li>
+                {% endif %}
+            {% endfor %}        
             </ul>
         </section>
 
         <section class="page page-2">
             {% include 'blocks/shop_category.twig' with{
-            'category_name': 'Оружие'
+            'category_name': 'Оружие',
+            "category_DBname": 'weapon',
             }
             %}
 
             <ul class="products">
-                <li>
-                    {% include 'blocks/shop_volume_card.twig' with{
-                    'base_path': '..',
-                    'card_pict':'rifle.png',
-                    'card_name':'Винтовка'
-                    }
-                    %}
-                </li>
 
-                <li>
-                    {% include 'blocks/shop_volume_card.twig' with{
-                    'base_path': '..',
-                    'card_pict':'rifle.png',
-                    'card_name':'не Винтовка'
-                    }
-                    %}
-                </li>
+                {% for product in products %}
+                    {% if product.category == "weapon" %}
+                    <li>
+                        {% include 'blocks/shop_volume_card.twig' with{               
+                         'card_name': product.title,
+                        'card_back_pict': 'сетка.png',
+                        'card_pict': product.image_path,
+                        'card_url': product.url_key,
+                        'card_category': product.category,
+                        }
+                        %}
+                    </li>
+                    {% endif %}
+                {% endfor %}
             </ul>
         </section>
-
     </main>
+
+    {% include "blocks/footer.twig" %}
+
+    {% include "blocks/common_scripts.twig" %}
+
+    <script src="{{asset_url('assets/js/busket_burger.js')}}"></script>
+    <script src="{{asset_url('assets/js/search.js')}}"></script>
 </body>
 
 </html>

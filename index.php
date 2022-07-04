@@ -1,171 +1,106 @@
 <?php
 
-use MySite\LatestPosts;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
-use \MySite\PostMapper;
+use DevCoder\DotEnv;
+/* страницы */
+use \MySite\Route\Home;
+use \MySite\Route\News;
+use \MySite\Route\Shop;
+use \MySite\Route\Post;
+use \MySite\Route\NewsPage;
+use MySite\Route\Account;
+use MySite\Route\Register;
+use MySite\Route\RegisterCheck;
+use MySite\Route\LoginCheck;
+use MySite\Route\Login;
+use MySite\Route\Logout;
+use MySite\Route\Wishlist;
+use MySite\Route\ShopProduct;
+use MySite\Session;
 
 include "src/TwigMiddleware.php";
 
 use MySite\Slim\TwigMiddleware;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 require __DIR__ . '/vendor/autoload.php';
 
 include "config/config.php";
 
 
-$database = include "config/database.php";
-$dsn = $database['dsn'];
-$username = $database['username'];
-$password = $database['password'];
-
-/*подключение базы */
-try {
-    $connection = new PDO($dsn, $username, $password);
-    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-} catch (PDOException $exception) {
-    echo "Database Error!" . $exception->getMessage();
-    exit;
-}
+(new DotEnv(__DIR__ . '/.env'))->load();
 
 
+$builder = new \DI\ContainerBuilder();
+$builder->addDefinitions('config/di.php');
 
+$container = $builder->build();
 
-
+AppFactory::setContainer($container);
 
 
 $app = AppFactory::create();
+$app->addErrorMiddleware(true, true, true);
 
-$app->add(new TwigMiddleware($view));
+
+//апгрейд ссылок для твига
+$app->add($container->get(TwigMiddleware::class));
+//аналог POST
+$app->addBodyParsingMiddleware();
+
+
+$session = new Session();
+//для удобства с сессией 
+//callback для каждого запроса на сайте
+$sessionMiddleware = function (ServerRequestInterface $request, RequestHandlerInterface $handler) use ($session) {
+    $session->start();
+
+    $response = $handler->handle($request);
+
+    $session->save();
+
+    return $response;
+};
+$app->add($sessionMiddleware);
+
+
 /* Главная */
-$app->get('/', function (Request $request, Response $response, $args) use ($view) {
-    $entered = true;
+$app->get('/', Home::class . ":execute");
 
 
-
-    $body = $view->render("home.twig", array(
-        'page_name' => 'Главная',
-        'base_path' => '',
-        'welcome_text' => 'Добро пожаловать на главную страницу игры',
-        'about_game_text' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Nostrum sit consectetur deleniti mollitia, nulla dolores architecto ex ad, laudantium quibusdam
-        corrupti?
-        Fuga quos alias molestiae. Id veniam incidunt dolore neque. Lorem, ipsum dolor sit amet
-        consectetur adipisicing elit.
-        Nostrum sit consectetur deleniti mollitia, nulla dolores architecto ex ad, laudantium quibusdam
-        corrupti?
-        Fuga quos alias molestiae. Id veniam incidunt dolore neque.',
-        'play_button_text' => 'Играть'
-    ));
-
-    $header = $view->render("blocks/header.twig", array(
-        'entered' => $entered,
-    ));
-
-    $footer = $view->render("blocks/footer.twig", array());
-
-    $response->getBody()->write($header);
-    $response->getBody()->write($body);
-    $response->getBody()->write($footer);
-
-    return $response;
-});
-/* Новости */
-$app->get('/news', function (Request $request, Response $response, $args) use ($view, $connection) {
-    //$latestPosts = new LatestPosts($connection);
-    $postMapper = new PostMapper($connection);
-
-    /*$posts = $latestPosts->get(3)); */
-    $posts = $postMapper->getList("DESC");
-
-
-    $entered = true;
-    $header = $view->render("blocks/header.twig", array(
-        'entered' => $entered,
-    ));
-
-    $body = $view->render("news.twig", array(
-        'page_name' => 'Новости',
-        'base_path' => '',
-        'posts' => $posts,
-    ));
-
-    $footer = $view->render("blocks/footer.twig", array());
-
-    $response->getBody()->write($header);
-    $response->getBody()->write($body);
-    $response->getBody()->write($footer);
-
-
-    return $response;
-});
 /* Магазин */
-$app->get('/shop', function (Request $request, Response $response, $args) use ($view) {
-
-    $entered = true;
-    $header = $view->render("blocks/header.twig", array(
-        'entered' => $entered,
-    ));
-
-    $body = $view->render("shop.twig", array(
-        'page_name' => 'Новости',
-        'base_path' => '',
-    ));
-
-    $footer = $view->render("blocks/footer.twig", array());
-
-    $response->getBody()->write($header);
-    $response->getBody()->write($body);
-    $response->getBody()->write($footer);
-
-    return $response;
-});
-/* Пост из новостей */
-$app->get('/news/{url_key}', function (Request $request, Response $response, $args) use ($view, $connection) {
-    $postMapper = new PostMapper($connection);
-
-    $post = $postMapper->getByUrlKey((string) $args['url_key']);
-
-    if (empty($post)) {
-        $body = $view->render("errors/error404.twig");
-    } else {
-
-
-
-        $body = $view->render("blocks/news_block.twig", array(
-            'post' => $post,
-            'page_name' => 'Новости',
-            'base_path' => '',
-        ));
-    }
-
-
-    $response->getBody()->write($body);
-
-    return $response;
-});
+$app->get('/shop', Shop::class . ":execute");
 //товар из магазина
-$app->get('/shop/product', function (Request $request, Response $response, $args) use ($view) {
+$app->get('/shop/products[/{product}]', ShopProduct::class . ":execute");
 
-    $entered = true;
-    $header = $view->render("blocks/header.twig", array(
-        'entered' => $entered,
-    ));
+/* Новости */
+$app->get('/news', News::class . ":execute");
+/* Страница с n постами */
+$app->get('/news/pages[/{page}]', NewsPage::class . ":execute");
+/* Пост из новостей */
+$app->get('/news/{post}', Post::class . ":execute");
 
-    $body = $view->render("product_page.twig", array(
-        'page_name' => 'Новости',
-        'base_path' => '',
-    ));
 
-    $footer = $view->render("blocks/footer.twig", array());
 
-    $response->getBody()->write($header);
-    $response->getBody()->write($body);
-    $response->getBody()->write($footer);
+//страница пользователя
+$app->get('/account', Account::class . ":execute");
+//корзина пользователя 
+$app->get('/account/wishlist', Wishlist::class . ":execute");
 
-    return $response;
-});
 
-$app->run();
+$app->get('/register', Register::class . ":execute");
+$app->get('/login', Login::class . ":execute");
+$app->get('/logout', Logout::class . ":execute");
+
+
+$app->post('/register-post', RegisterCheck::class . ":execute");
+$app->post('/login-post', LoginCheck::class . ":execute");
+
+try {
+    $app->run();
+} catch (Exception $e) {
+    die(json_encode(array("status" => "failed", "message" => "Oh, something went wrong")));
+}

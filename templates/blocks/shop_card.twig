@@ -1,5 +1,5 @@
-<div class="shop_card">
-    <img class='card_border' src='{{base_path}}/assets/pictures/shop/card/рамка.png' alt=""></img>
+<div class="shop_card" id="{{card_category}}">
+    <img class='card_border' src='{{asset_url("/assets/pictures/shop/card/рамка.png")}}' alt=""></img>
 
     {% block borders %}
     <!-- квадратики по краям -->
@@ -15,30 +15,37 @@
     </ul>
     {% endblock %}
 
-
-    <a class="link" href="shop/product">
+    {% block link %}
+    <a class="link" href="shop/products/{{card_url}}">
         <figure class='card_info pointer'>
+
             {% block back_pict %}
-            <img class='back_picture back_pict_hover resizeful_back_pict'
-                src="{{base_path}}/assets/pictures/shop/card/{{card_back_pict}}" alt=""></img>
+            <img class='back_picture back_pict_hover resizeful_back_pict' 
+                src="{{asset_url("/assets/pictures/shop/card/")}}{{card_back_pict}}" alt="">
+            </img>
             {% endblock %}
 
 
 
             {% block card_picture %}
             <div class='product_pict_container'>
-                <img class='product_picture scalable_pict' src="{{base_path}}/assets/pictures/shop/{{card_pict}}"
+                <img class='product_picture scalable_pict' src="{{asset_url("/assets/pictures/shop/")}}{{card_category}}/{{card_pict}}"
                     alt="">
             </div>
             {% endblock %}
 
 
-            {%block card_text %}
+            {% block card_text %}
             <figcaption class='card_text_container'>
                 <p class='card_text'>{{card_name}}</p>
             </figcaption>
             {% endblock %}
+
+            {% block card_category %}
+                <p class='card_category'>{{card_category}}</p>
+            {% endblock %}
         </figure>
     </a>
+    {% endblock %}
 
 </div>

@@ -3,9 +3,9 @@
     <header id='header' class='header lock-padding flex'>
         <div class='navbar'>
             <div class='left_header'>
-                <img class='nav_icon' src='../assets/pictures/icons/header_icon.png' alt="">
+                <img class='nav_icon' src="{{asset_url('assets/pictures/icons/header_icon.png')}}" alt="">
 
-                <div class='menu_container'>
+                <div class='menu_container burger-panel'>
                     <nav>
                         <ul class='menu'>
                             <li class='selected_line'><a href='/' data-text='Главная'>Главная</a></li>
@@ -23,32 +23,42 @@
 
 
             {% block right_header %}
-            <div class="right_header">
-                <div class='header_burger'>
-                    <span>
-                    </span>
+                <div class="right_header">
+                    <div class='header_burger burger'>
+                        <span>
+                        </span>
+                    </div>
+
+                    {% block busket %}
+                    {% endblock %}
+
+                    <div class='entry_icon_burger'>      
+                        <a class='login_link burger' href="#">
+                            {% if user.username is not null %}
+                                <img class='nav_icon_login' src='{{asset_url('assets/pictures/icons/entry.png')}}' alt=""></img>
+                            {% else %}
+                                <img class='nav_icon_login' src='{{asset_url('assets/pictures/icons/noEntry.png')}}' alt=""></img>
+                            {% endif %}
+                        </a>   
+
+                        <ul class="menu_list burger-panel">
+                            <li>
+                                {% if user.username is null %}
+                                <a href="{{url('login')}}" class="menu_link">Личный кабинет</a>
+                                {% else %}
+                                <a href="{{url('account')}}" class="menu_link">Личный кабинет</a>
+                                {% endif %}
+                            </li>
+
+                            <li>
+                                <a href="{{url('logout')}}" class="menu_link">ВЫХОД</a>
+                            </li>
+                        </ul>                                        
+                    </div>
+
+                    
+
                 </div>
-
-                {% block busket %}
-                {% endblock %}
-
-                <div class='entry_icon_burger'>
-                    {% if entered == true %}
-                    <img class='nav_icon_login' src='../assets/pictures/icons/entry.png' alt=""></img>
-                    {% else %}
-                    <img class='nav_icon_login' src='../assets/pictures/icons/noEntry.png' alt=""></img>
-                    {% endif %}
-
-                    <ul class="menu_list">
-                        <li>
-                            <a href="" class="menu_link">Личный кабинет</a>
-                        </li>
-                        <li>
-                            <a href="" class="menu_link">Ds[jl</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
             {% endblock %}
         </div>
     </header>

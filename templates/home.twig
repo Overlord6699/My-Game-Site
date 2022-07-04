@@ -8,32 +8,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
+    <link rel='shortcut icon' href="{{asset_url('/assets/pictures/icons/chest.png')}}" type='image/x-icon'>
 
-    <link rel='shortcut icon' href='{{asset_url('/assets/pictures/icons/chest.png')}}}' type='image/x-icon'>
-
-
-    <link rel="stylesheet" href="{{asset_url('/assets/styles/header.css')}}">
-
-
-    <link rel="stylesheet" href="{{asset_url('/assets/styles/footer.css')}}">
-
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper@6/swiper-bundle.min.css">
-
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/> 
 
     <link rel="stylesheet" href="{{asset_url('/assets/styles/main.css')}}">
+    <link rel="stylesheet" href="{{asset_url('/assets/styles/header.css')}}">
+    <link rel="stylesheet" href="{{asset_url('/assets/styles/footer.css')}}">
     <link rel='stylesheet' href='{{asset_url('/assets/styles/fonts.css')}}'>
 
     <title>{{page_name}}</title>
 </head>
 
 <body>
+    {% include "blocks/header.twig" with{
+        "user": "user"
+    }
+    %}
 
     <main>
         <section class='page page-1'>
 
-            <div class='game_name_text'>
-                <h1>{{welcome_text}}</h1>
+            <div class='game_name_container'>
+                <h1 class='game_name_text'>{{welcome_text}}</h1>
             </div>
 
             <img class='main_picture' src='{{asset_url('/assets/pictures/MainPicture.png')}}' alt="">
@@ -65,11 +62,10 @@
 
         <section class='page page-3'>
             <div class='page-3_content'>
-                <div class='enemy_info_content'>
+                <div class='slider_content'>
                     <!--слайдер-->
                     <div class='image-slider swiper-container'>
                         <div class='swiper-wrapper'>
-
                             <!-- СЛАЙД СУЩЕСТВА №1 -->
                             {%
                             include 'slider/slider_slide.twig'
@@ -133,7 +129,7 @@
                 {% include "blocks/home_section.twig" with {section_name: "Оружие"} %}
 
 
-                <div class='weapon_info_content'>
+                <div class='slider_content'>
                     <!--слайдер-->
                     <div class='image-slider swiper-container'>
                         <div class='swiper-wrapper'>
@@ -178,11 +174,14 @@
 
                 <img class='finish_line' src='{{asset_url('/assets/pictures/decor/finish_line.png')}}' alt="">
 
-
-                <h5 class="trailer_text">Трейлер игры</h5>
+                <div class='trailer_text_container'>
+                    <h5 class="trailer_text">Трейлер игры</h5>
+                </div>
 
                 <div class="video_container">
                     <div class="video_preview active" id="preview1">
+                        <video class="" id="video1" src="{{asset_url('/assets/video/trailer.webm')}}" controls></video>
+                        
                         <button type="button" onclick="video1Start()" class="video-play-button">
                             <img src="{{asset_url('/assets/pictures/icons/play_video_button.png')}}" alt="">
                         </button>
@@ -190,8 +189,7 @@
                         <figure>
                             <img src="{{asset_url('/assets/pictures/trailer.jpg')}}" alt="">
                         </figure>
-                    </div>
-                    <video class="" id="video1" src="{{asset_url('/assets/video/trailer.webm')}}" controls></video>
+                    </div>                   
                 </div>
 
 
@@ -212,22 +210,44 @@
                         <p class='question_info'>Заполните форму и мы свяжемся с Вами в ближайшее время</p>
                     </div>
 
-                    <form class='question_form' onsubmit="return false">
-                        <input type='text' name='username' placeholder='Имя' required>
+                    <form id="form" action="#" class='question_form'>
+                        <div class="row_form">
+                            <input type='text' class="form_input _req" name='username' placeholder='Имя' required>
 
-                        <input type='email' name='email' placeholder='Email' required>
+                            <input type='email' class="form_input _req _email" name='email' placeholder='Email' required>
 
-                        <input class='button' type='submit' value='Отправить' onsubmit='return false'>
+                            <input class='button' type='submit' value='Отправить'>                           
+                        </div>
+
+                        <div class="checkbox_container">
+                            <input  checked id="agree" type="checkbox" class="_req" name="agreement">
+                            <label for="agree" class="checkbox_label">
+                                <span>
+                                    Я согласен на блаблабла...
+                                </span>
+                            </label>
+                        </div>
                     </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="https://unpkg.com/swiper@6/swiper-bundle.min.js"></script>
-    <script src='{{asset_url('/assets/js/slider/slider.js')}}'></script>
+    {% include "blocks/footer.twig" %}
+
+    
+    
+
     <script src='{{asset_url('/assets/js/videoplayer.js')}}'></script>
-    <script src='{{asset_url('/assets/js/burger.js')}}'></script>
+    <script src='{{asset_url('/assets/js/submit_form.js')}}'></script>
+
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src='{{asset_url('/assets/js/slider/slider.js')}}'></script>
+
+
+
+
+    {% include "blocks/common_scripts.twig" %}
 </body>
 
 </html>

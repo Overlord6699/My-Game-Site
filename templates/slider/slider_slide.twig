@@ -2,11 +2,13 @@
 
 
 {% block picture %}
-{{parent()}}
+<img class='slider_picture' src='{{base_path}}/assets/pictures/{{enemy_pict}}' alt="">
 {% endblock %}
 
 {% block name %}
-{{parent()}}
+ <div class='enemy_name'>
+        <h4 class='enemy_name_text'>{{enemy_name}}</h4>
+    </div>
 {% endblock %}
 
 {% block description %}
