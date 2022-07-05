@@ -33,7 +33,7 @@ function SendMail()
         // Настройки вашей почты
         $mail->Host       = 'smtp.mail.ru'; // SMTP сервера вашей почты
         $mail->Username   = 'ilya.velikolpnyyy@mail.ru';
-        $mail->Password   = 'PM9fRMze92P1nEKwhj8z'; // Пароль на почте
+        $mail->Password   = 'secret'; // Пароль на почте
         $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
         $mail->setFrom('ilya.velikolpnyyy@mail.ru', 'Game Site'); // Адрес самой почты и имя отправителя
